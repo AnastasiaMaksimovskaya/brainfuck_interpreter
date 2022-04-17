@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="InterpreterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-04-17T15:05:15" hostname="DESKTOP-4RA5DJE" time="0.061">
+  <properties/>
+  <testcase name="shouldBeSecondHelloWorld()" classname="InterpreterTest" time="0.055"/>
+  <testcase name="shouldBeFirstHelloWorld()" classname="InterpreterTest" time="0.001"/>
+  <testcase name="shouldBeThirdHelloWorld()" classname="InterpreterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

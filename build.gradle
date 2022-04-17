@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+}
+mainClassName = 'ua.com.test.Main'
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest.attributes("Main-Class": mainClassName);
+    baseName 'interpreter'
+    version '0.1.0'
+}
