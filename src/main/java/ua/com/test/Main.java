@@ -2,8 +2,8 @@ package ua.com.test;
 
 public class Main {
     public static void main(String[] args) {
-        Reader reader = new Reader();
+        String hello = ">+++++++++[<++++++++>-]<.";
         Interpreter interpreter = new Interpreter();
-        System.out.println(interpreter.interpret(reader.read()));
+        interpreter.interpret(hello);
     }
 }
