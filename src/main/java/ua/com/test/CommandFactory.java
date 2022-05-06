@@ -6,6 +6,7 @@ public class CommandFactory {
 
     private Map<Character, Command> commandStorage = new HashMap<>();
     private Deque<ArrayList<Command>> stack = new ArrayDeque<>();
+    private StringBuilder output = new StringBuilder();
 
     public CommandFactory(Memory memory) {
         stack.push(new ArrayList<>());
@@ -13,10 +14,10 @@ public class CommandFactory {
         commandStorage.put('<', () -> stack.peek().add(() -> memory.setPosition(memory.getPosition() - 1)));
         commandStorage.put('+', () -> stack.peek().add(() -> memory.getBytes()[memory.getPosition()]++));
         commandStorage.put('-', () -> stack.peek().add(() -> memory.getBytes()[memory.getPosition()]--));
-        commandStorage.put('.', () -> stack.peek().add(() -> System.out.println((memory.getBytes()[memory.getPosition()]))));
+        commandStorage.put('.', () -> stack.peek().add(() -> output.append((char) (memory.getBytes()[memory.getPosition()]))));
         commandStorage.put('[', () -> stack.push(new ArrayList<>()));
-        commandStorage.put(']', () ->{
-            while ( memory.getBytes()[memory.getPosition()]!=0){
+        commandStorage.put(']', () -> {
+            while (memory.getBytes()[memory.getPosition()] > 0) {
                 stack.peek().forEach(Command::execute);
             }
             stack.pop();
@@ -31,13 +32,7 @@ public class CommandFactory {
         return stack;
     }
 
-    public int changePosition(Deque<ArrayList<Command>> stack) {
-        Deque<ArrayList<Command>> arrayListDeque = new ArrayDeque<>(stack);
-        int position = 0;
-        while (arrayListDeque.size() != 0) {
-            position += arrayListDeque.peek().size();
-            arrayListDeque.pop();
-        }
-        return position;
+    public StringBuilder getOutput() {
+        return output;
     }
 }
